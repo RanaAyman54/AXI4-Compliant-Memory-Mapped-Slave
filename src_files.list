@@ -1,0 +1,8 @@
+./memory/axi_memory.v
+axi4.sv
+axi4_transaction.sv
+axi4_sva.sv
+axi4_if.sv
+axi4_coverage.sv
+axi4_tb.sv
+axi4_top.sv

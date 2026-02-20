@@ -1,0 +1,1024 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /\axi4_top#DUT /mem_inst
+=== Design Unit: work.axi4_memory
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         5         5         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /\axi4_top#DUT /mem_inst
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File ./memory/axi_memory.v
+------------------------------------IF Branch------------------------------------
+    24                                     16813     Count coming in to IF
+    24              1                         11             if (!rst_n)
+    26              1                      10422             else if (mem_en) begin
+                                            6380     All False Count
+Branch totals: 3 hits of 3 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    27                                     10422     Count coming in to IF
+    27              1                       5214                 if (mem_we)
+    29              1                       5208                  else 
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       7         7         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /\axi4_top#DUT /mem_inst --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File ./memory/axi_memory.v
+    1                                                module axi4_memory #(
+    2                                                    parameter DATA_WIDTH = 32,
+    3                                                    parameter ADDR_WIDTH = 10,    // For 1024 locations
+    4                                                    parameter DEPTH = 1024
+    5                                                )(
+    6                                                    input  wire                     clk,
+    7                                                    input  wire                     rst_n,
+    8                                                    
+    9                                                    input  wire                     mem_en,
+    10                                                   input  wire                     mem_we,
+    11                                                   input  wire [ADDR_WIDTH-1:0]    mem_addr,
+    12                                                   input  wire [DATA_WIDTH-1:0]    mem_wdata,
+    13                                                   output reg  [DATA_WIDTH-1:0]    mem_rdata
+    14                                               );
+    15                                               
+    16                                                   // Memory array
+    17                                                   reg [DATA_WIDTH-1:0] memory [0:DEPTH-1];
+    18                                                   
+    19                                                   
+    20                                                   integer j;
+    21                                                   
+    22                                                   // Memory write
+    23              1                      16813         always @(posedge clk) begin
+    24                                                       if (!rst_n)
+    25              1                         11                 mem_rdata <= 0;
+    26                                                       else if (mem_en) begin
+    27                                                           if (mem_we)
+    28              1                       5214                     memory[mem_addr] <= mem_wdata;
+    29                                                            else 
+    30              1                       5208                    mem_rdata <= memory[mem_addr];
+    31                                                       end
+    32                                                   end
+    33                                                   
+    34                                                   // Initialize memory
+    35                                                   initial begin
+    36              1                          1             for (j = 0; j < DEPTH; j = j + 1)
+    36              2                       1024     
+    37              1                       1024                 memory[j] = 0;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        220       156        64    70.90%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /\axi4_top#DUT /mem_inst --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                               clk           1           1      100.00 
+                                           j[31-0]           0           0        0.00 
+                                     mem_addr[0-9]           1           1      100.00 
+                                            mem_en           1           1      100.00 
+                                   mem_rdata[31-0]           1           1      100.00 
+                                   mem_wdata[0-31]           1           1      100.00 
+                                            mem_we           1           1      100.00 
+                                             rst_n           1           1      100.00 
+
+Total Node Count     =        110 
+Toggled Node Count   =         78 
+Untoggled Node Count =         32 
+
+Toggle Coverage      =      70.90% (156 of 220 bins)
+
+=================================================================================
+=== Instance: /\axi4_top#DUT /sva
+=== Design Unit: work.axi4_sva
+=================================================================================
+
+Assertion Coverage:
+    Assertions                       6         6         0   100.00%
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/\axi4_top#DUT /sva/assert_rst
+                     axi4_sva.sv(7)                     0          1
+/\axi4_top#DUT /sva/clk_check
+                     axi4_sva.sv(18)                    0          1
+/\axi4_top#DUT /sva/ap_address_write
+                     axi4_sva.sv(48)                    0          1
+/\axi4_top#DUT /sva/ap_address_read
+                     axi4_sva.sv(51)                    0          1
+/\axi4_top#DUT /sva/ap_writeData
+                     axi4_sva.sv(54)                    0          1
+/\axi4_top#DUT /sva/ap_writeResponse
+                     axi4_sva.sv(63)                    0          1
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         2         2         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /\axi4_top#DUT /sva
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File axi4_sva.sv
+------------------------------------IF Branch------------------------------------
+    6                                      11982     Count coming in to IF
+    6               1                         18                 if(!axi4If.ARESETn)
+                                           11964     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+
+Directive Coverage:
+    Directives                       4         4         0   100.00%
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/\axi4_top#DUT /sva/cp_address_write     axi4_sva Verilog  SVA  axi4_sva.sv(49) 7231 Covered   
+/\axi4_top#DUT /sva/cp_address_read      axi4_sva Verilog  SVA  axi4_sva.sv(52) 11282 Covered   
+/\axi4_top#DUT /sva/cp_writeData         axi4_sva Verilog  SVA  axi4_sva.sv(55) 5871 Covered   
+/\axi4_top#DUT /sva/cp_writeResponse     axi4_sva Verilog  SVA  axi4_sva.sv(64)  136 Covered   
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       5         5         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /\axi4_top#DUT /sva --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File axi4_sva.sv
+    2                                                module axi4_sva (axi4_if.DUT axi4If);
+    3                                                
+    4                                                    //reset checker
+    5               1                      11982         always_comb begin 
+    6                                                            if(!axi4If.ARESETn)
+    7                                                                  assert_rst: assert final(axi4If.AWREADY === 1 && axi4If.WREADY === 0 && axi4If.BRESP === 0 && axi4If.BVALID === 0 && axi4If.ARREADY === 1 && axi4If.RDATA === 0 && axi4If.RRESP === 0 && axi4If.RLAST === 0 && axi4If.RVALID ===0);
+    8                                                      end
+    9                                                
+    10                                                     //clk checker
+    11                                                     bit clk_temp;
+    12                                                     parameter CLK_PERIOD = 10;
+    13                                                     initial begin
+    14              1                          1                 #CLK_PERIOD;
+    15              1                          1                 forever begin
+    16              1                      37486                       clk_temp = axi4If.ACLK;
+    17              1                      37486                       #(CLK_PERIOD/2);
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                          2         2         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /\axi4_top#DUT /sva --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                          clk_temp           1           1      100.00 
+
+Total Node Count     =          1 
+Toggled Node Count   =          1 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (2 of 2 bins)
+
+=================================================================================
+=== Instance: /\axi4_top#DUT 
+=== Design Unit: work.axi4
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        35        33         2    94.28%
+
+================================Branch Details================================
+
+Branch Coverage for instance /\axi4_top#DUT 
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File axi4.sv
+------------------------------------IF Branch------------------------------------
+    67                                     18755     Count coming in to IF
+    67              1                         26             if (!axi4If.ARESETn) begin
+    100             1                      18729             end else begin
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    108                                    18729     Count coming in to CASE
+    109             1                      11708                     W_IDLE: begin
+    126             1                        136                     W_ADDR: begin
+    132             1                       6737                     W_DATA: begin
+    163             1                        148                     W_RESP: begin
+    171             1                    ***0***                     default: write_state <= W_IDLE;
+Branch totals: 4 hits of 5 branches = 80.00%
+
+------------------------------------IF Branch------------------------------------
+    114                                    11708     Count coming in to IF
+    114             1                        136                         if (axi4If.AWVALID && axi4If.AWREADY) begin
+                                           11572     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    133                                     6737     Count coming in to IF
+    133             1                       5364                         if (axi4If.WVALID && axi4If.WREADY) begin
+                                            1373     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    135                                     5364     Count coming in to IF
+    135             1                       5214                             if (write_addr_valid && !write_boundary_cross) begin
+                                             150     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    144                                     5364     Count coming in to IF
+    144             1                        136                             if (axi4If.WLAST || write_burst_cnt == 0) begin
+    155             1                       5228                             end else begin
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    149                                      136     Count coming in to IF
+    149             1                         16                                 if (!write_addr_valid || write_boundary_cross) begin
+    151             1                        120                                 end else begin
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    164                                      148     Count coming in to IF
+    164             1                        136                         if (axi4If.BREADY && axi4If.BVALID) begin
+                                              12     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    178                                    18729     Count coming in to CASE
+    179             1                       7565                     R_IDLE: begin
+    196             1                        135                     R_ADDR: begin
+    206             1                      11029                     R_DATA: begin
+    242             1                    ***0***                     default: read_state <= R_IDLE;
+Branch totals: 3 hits of 4 branches = 75.00%
+
+------------------------------------IF Branch------------------------------------
+    184                                     7565     Count coming in to IF
+    184             1                        135                         if (axi4If.ARVALID && axi4If.ARREADY) begin
+                                            7430     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    198                                      135     Count coming in to IF
+    198             1                        119                         if (read_addr_valid && !read_boundary_cross) begin
+                                              16     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    208                                    11029     Count coming in to IF
+    208             1                      10721                         if (read_addr_valid && !read_boundary_cross) begin
+    211             1                        308                         end else begin
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    219                                    11029     Count coming in to IF
+    219             1                       5358                         if (axi4If.RREADY && axi4If.RVALID) begin
+                                            5671     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    222                                     5358     Count coming in to IF
+    222             1                       5223                             if (read_burst_cnt > 0) begin
+    234             1                        135                             end else begin
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    228                                     5223     Count coming in to IF
+    228             1                       5089                                 if (read_addr_valid && !read_boundary_cross) begin
+                                             134     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                      23        20         3    86.95%
+
+================================Condition Details================================
+
+Condition Coverage for instance /\axi4_top#DUT  --
+
+  File axi4.sv
+----------------Focused Condition View-------------------
+Line       114 Item    1  (axi4If.AWVALID && axi4If.AWREADY)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+      Input Term   Covered  Reason for no coverage   Hint
+     -----------  --------  -----------------------  --------------
+  axi4If.AWVALID         Y
+  axi4If.AWREADY         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  axi4If.AWVALID_0      -                             
+  Row   2:          1  axi4If.AWVALID_1      axi4If.AWREADY                
+  Row   3:          1  axi4If.AWREADY_0      axi4If.AWVALID                
+  Row   4:          1  axi4If.AWREADY_1      axi4If.AWVALID                
+
+----------------Focused Condition View-------------------
+Line       133 Item    1  (axi4If.WVALID && axi4If.WREADY)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+     Input Term   Covered  Reason for no coverage   Hint
+    -----------  --------  -----------------------  --------------
+  axi4If.WVALID         Y
+  axi4If.WREADY         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  axi4If.WVALID_0       -                             
+  Row   2:          1  axi4If.WVALID_1       axi4If.WREADY                 
+  Row   3:    ***0***  axi4If.WREADY_0       axi4If.WVALID                 
+  Row   4:          1  axi4If.WREADY_1       axi4If.WVALID                 
+
+----------------Focused Condition View-------------------
+Line       135 Item    1  (write_addr_valid && ~write_boundary_cross)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+            Input Term   Covered  Reason for no coverage   Hint
+           -----------  --------  -----------------------  --------------
+      write_addr_valid         Y
+  write_boundary_cross         Y
+
+     Rows:       Hits  FEC Target              Non-masking condition(s)      
+ ---------  ---------  --------------------    -------------------------     
+  Row   1:          1  write_addr_valid_0      -                             
+  Row   2:          1  write_addr_valid_1      ~write_boundary_cross         
+  Row   3:          1  write_boundary_cross_0  write_addr_valid              
+  Row   4:          1  write_boundary_cross_1  write_addr_valid              
+
+----------------Focused Condition View-------------------
+Line       144 Item    1  (axi4If.WLAST || (write_burst_cnt == 0))
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+              Input Term   Covered  Reason for no coverage   Hint
+             -----------  --------  -----------------------  --------------
+            axi4If.WLAST         Y
+  (write_burst_cnt == 0)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                Non-masking condition(s)      
+ ---------  ---------  --------------------      -------------------------     
+  Row   1:          1  axi4If.WLAST_0            ~(write_burst_cnt == 0)       
+  Row   2:          1  axi4If.WLAST_1            -                             
+  Row   3:          1  (write_burst_cnt == 0)_0  ~axi4If.WLAST                 
+  Row   4:    ***0***  (write_burst_cnt == 0)_1  ~axi4If.WLAST                 
+
+----------------Focused Condition View-------------------
+Line       149 Item    1  (~write_addr_valid || write_boundary_cross)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+            Input Term   Covered  Reason for no coverage   Hint
+           -----------  --------  -----------------------  --------------
+      write_addr_valid         Y
+  write_boundary_cross         Y
+
+     Rows:       Hits  FEC Target              Non-masking condition(s)      
+ ---------  ---------  --------------------    -------------------------     
+  Row   1:          1  write_addr_valid_0      -                             
+  Row   2:          1  write_addr_valid_1      ~write_boundary_cross         
+  Row   3:          1  write_boundary_cross_0  write_addr_valid              
+  Row   4:          1  write_boundary_cross_1  write_addr_valid              
+
+----------------Focused Condition View-------------------
+Line       164 Item    1  (axi4If.BREADY && axi4If.BVALID)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+     Input Term   Covered  Reason for no coverage   Hint
+    -----------  --------  -----------------------  --------------
+  axi4If.BREADY         Y
+  axi4If.BVALID         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  axi4If.BREADY_0       -                             
+  Row   2:          1  axi4If.BREADY_1       axi4If.BVALID                 
+  Row   3:    ***0***  axi4If.BVALID_0       axi4If.BREADY                 
+  Row   4:          1  axi4If.BVALID_1       axi4If.BREADY                 
+
+----------------Focused Condition View-------------------
+Line       184 Item    1  (axi4If.ARVALID && axi4If.ARREADY)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+      Input Term   Covered  Reason for no coverage   Hint
+     -----------  --------  -----------------------  --------------
+  axi4If.ARVALID         Y
+  axi4If.ARREADY         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  axi4If.ARVALID_0      -                             
+  Row   2:          1  axi4If.ARVALID_1      axi4If.ARREADY                
+  Row   3:          1  axi4If.ARREADY_0      axi4If.ARVALID                
+  Row   4:          1  axi4If.ARREADY_1      axi4If.ARVALID                
+
+----------------Focused Condition View-------------------
+Line       198 Item    1  (read_addr_valid && ~read_boundary_cross)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+           Input Term   Covered  Reason for no coverage   Hint
+          -----------  --------  -----------------------  --------------
+      read_addr_valid         Y
+  read_boundary_cross         Y
+
+     Rows:       Hits  FEC Target             Non-masking condition(s)      
+ ---------  ---------  --------------------   -------------------------     
+  Row   1:          1  read_addr_valid_0      -                             
+  Row   2:          1  read_addr_valid_1      ~read_boundary_cross          
+  Row   3:          1  read_boundary_cross_0  read_addr_valid               
+  Row   4:          1  read_boundary_cross_1  read_addr_valid               
+
+----------------Focused Condition View-------------------
+Line       208 Item    1  (read_addr_valid && ~read_boundary_cross)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+           Input Term   Covered  Reason for no coverage   Hint
+          -----------  --------  -----------------------  --------------
+      read_addr_valid         Y
+  read_boundary_cross         Y
+
+     Rows:       Hits  FEC Target             Non-masking condition(s)      
+ ---------  ---------  --------------------   -------------------------     
+  Row   1:          1  read_addr_valid_0      -                             
+  Row   2:          1  read_addr_valid_1      ~read_boundary_cross          
+  Row   3:          1  read_boundary_cross_0  read_addr_valid               
+  Row   4:          1  read_boundary_cross_1  read_addr_valid               
+
+----------------Focused Condition View-------------------
+Line       219 Item    1  (axi4If.RREADY && axi4If.RVALID)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+     Input Term   Covered  Reason for no coverage   Hint
+    -----------  --------  -----------------------  --------------
+  axi4If.RREADY         Y
+  axi4If.RVALID         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  axi4If.RREADY_0       -                             
+  Row   2:          1  axi4If.RREADY_1       axi4If.RVALID                 
+  Row   3:          1  axi4If.RVALID_0       axi4If.RREADY                 
+  Row   4:          1  axi4If.RVALID_1       axi4If.RREADY                 
+
+----------------Focused Condition View-------------------
+Line       222 Item    1  (read_burst_cnt > 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+            Input Term   Covered  Reason for no coverage   Hint
+           -----------  --------  -----------------------  --------------
+  (read_burst_cnt > 0)         Y
+
+     Rows:       Hits  FEC Target              Non-masking condition(s)      
+ ---------  ---------  --------------------    -------------------------     
+  Row   1:          1  (read_burst_cnt > 0)_0  -                             
+  Row   2:          1  (read_burst_cnt > 0)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       228 Item    1  (read_addr_valid && ~read_boundary_cross)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+           Input Term   Covered  Reason for no coverage   Hint
+          -----------  --------  -----------------------  --------------
+      read_addr_valid         Y
+  read_boundary_cross         Y
+
+     Rows:       Hits  FEC Target             Non-masking condition(s)      
+ ---------  ---------  --------------------   -------------------------     
+  Row   1:          1  read_addr_valid_0      -                             
+  Row   2:          1  read_addr_valid_1      ~read_boundary_cross          
+  Row   3:          1  read_boundary_cross_0  read_addr_valid               
+  Row   4:          1  read_boundary_cross_1  read_addr_valid               
+
+
+Expression Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Expressions                      5         5         0   100.00%
+
+================================Expression Details================================
+
+Expression Coverage for instance /\axi4_top#DUT  --
+
+  File axi4.sv
+----------------Focused Expression View-----------------
+Line       28 Item    1  (((write_addr & 4095) + ((write_burst_cnt + 1) << write_size)) > 4095)
+Expression totals: 1 of 1 input term covered = 100.00%
+
+                                                              Input Term   Covered  Reason for no coverage   Hint
+                                                             -----------  --------  -----------------------  --------------
+  (((write_addr & 4095) + ((write_burst_cnt + 1) << write_size)) > 4095)         Y
+
+     Rows:       Hits  FEC Target                                                                Non-masking condition(s)      
+ ---------  ---------  --------------------                                                      -------------------------     
+  Row   1:          1  (((write_addr & 4095) + ((write_burst_cnt + 1) << write_size)) > 4095)_0  -                             
+  Row   2:          1  (((write_addr & 4095) + ((write_burst_cnt + 1) << write_size)) > 4095)_1  -                             
+
+----------------Focused Expression View-----------------
+Line       30 Item    1  (((read_addr & 4095) + ((read_burst_cnt + 1) << read_size)) > 4095)
+Expression totals: 1 of 1 input term covered = 100.00%
+
+                                                           Input Term   Covered  Reason for no coverage   Hint
+                                                          -----------  --------  -----------------------  --------------
+  (((read_addr & 4095) + ((read_burst_cnt + 1) << read_size)) > 4095)         Y
+
+     Rows:       Hits  FEC Target                                                             Non-masking condition(s)      
+ ---------  ---------  --------------------                                                   -------------------------     
+  Row   1:          1  (((read_addr & 4095) + ((read_burst_cnt + 1) << read_size)) > 4095)_0  -                             
+  Row   2:          1  (((read_addr & 4095) + ((read_burst_cnt + 1) << read_size)) > 4095)_1  -                             
+
+----------------Focused Expression View-----------------
+Line       33 Item    1  ((write_addr >> 2) < axi4If.MEMORY_DEPTH)
+Expression totals: 1 of 1 input term covered = 100.00%
+
+                                 Input Term   Covered  Reason for no coverage   Hint
+                                -----------  --------  -----------------------  --------------
+  ((write_addr >> 2) < axi4If.MEMORY_DEPTH)         Y
+
+     Rows:       Hits  FEC Target                                   Non-masking condition(s)      
+ ---------  ---------  --------------------                         -------------------------     
+  Row   1:          1  ((write_addr >> 2) < axi4If.MEMORY_DEPTH)_0  -                             
+  Row   2:          1  ((write_addr >> 2) < axi4If.MEMORY_DEPTH)_1  -                             
+
+----------------Focused Expression View-----------------
+Line       34 Item    1  ((read_addr >> 2) < axi4If.MEMORY_DEPTH)
+Expression totals: 1 of 1 input term covered = 100.00%
+
+                                Input Term   Covered  Reason for no coverage   Hint
+                               -----------  --------  -----------------------  --------------
+  ((read_addr >> 2) < axi4If.MEMORY_DEPTH)         Y
+
+     Rows:       Hits  FEC Target                                  Non-masking condition(s)      
+ ---------  ---------  --------------------                        -------------------------     
+  Row   1:          1  ((read_addr >> 2) < axi4If.MEMORY_DEPTH)_0  -                             
+  Row   2:          1  ((read_addr >> 2) < axi4If.MEMORY_DEPTH)_1  -                             
+
+----------------Focused Expression View-----------------
+Line       217 Item    1  (read_burst_cnt == 0)
+Expression totals: 1 of 1 input term covered = 100.00%
+
+             Input Term   Covered  Reason for no coverage   Hint
+            -----------  --------  -----------------------  --------------
+  (read_burst_cnt == 0)         Y
+
+     Rows:       Hits  FEC Target               Non-masking condition(s)      
+ ---------  ---------  --------------------     -------------------------     
+  Row   1:          1  (read_burst_cnt == 0)_0  -                             
+  Row   2:          1  (read_burst_cnt == 0)_1  -                             
+
+
+FSM Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    FSM States                       7         7         0   100.00%
+    FSM Transitions                 10         7         3    70.00%
+
+================================FSM Details================================
+
+FSM Coverage for instance /\axi4_top#DUT  --
+
+FSM_ID: write_state
+    Current State Object : write_state
+    ----------------------
+    State Value MapInfo :
+    ---------------------
+Line          State Name               Value
+----          ----------               -----
+ 109              W_IDLE                   0
+ 126              W_ADDR                   1
+ 132              W_DATA                   2
+ 163              W_RESP                   3
+    Covered States :
+    ----------------
+                   State           Hit_count
+                   -----           ---------
+                  W_IDLE                 162          
+                  W_ADDR                 136          
+                  W_DATA                 136          
+                  W_RESP                 136          
+    Covered Transitions :
+    ---------------------
+Line            Trans_ID           Hit_count          Transition          
+----            --------           ---------          ----------          
+ 122                   0                 136          W_IDLE -> W_ADDR              
+ 129                   1                 136          W_ADDR -> W_DATA              
+ 146                   3                 136          W_DATA -> W_RESP              
+ 167                   5                 136          W_RESP -> W_IDLE              
+    Uncovered Transitions :
+    -----------------------
+Line            Trans_ID          Transition          
+----            --------          ----------          
+  81                   2          W_ADDR -> W_IDLE    
+  81                   4          W_DATA -> W_IDLE    
+
+
+    Summary                       Bins      Hits    Misses  Coverage
+    -------                       ----      ----    ------  --------
+        FSM States                   4         4         0   100.00%
+        FSM Transitions              6         4         2    66.66%
+FSM_ID: read_state
+    Current State Object : read_state
+    ----------------------
+    State Value MapInfo :
+    ---------------------
+Line          State Name               Value
+----          ----------               -----
+ 179              R_IDLE                   0
+ 196              R_ADDR                   1
+ 206              R_DATA                   2
+    Covered States :
+    ----------------
+                   State           Hit_count
+                   -----           ---------
+                  R_IDLE                 161          
+                  R_ADDR                 135          
+                  R_DATA                 135          
+    Covered Transitions :
+    ---------------------
+Line            Trans_ID           Hit_count          Transition          
+----            --------           ---------          ----------          
+ 192                   0                 135          R_IDLE -> R_ADDR              
+ 203                   1                 135          R_ADDR -> R_DATA              
+ 237                   3                 135          R_DATA -> R_IDLE              
+    Uncovered Transitions :
+    -----------------------
+Line            Trans_ID          Transition          
+----            --------          ----------          
+  82                   2          R_ADDR -> R_IDLE    
+
+
+    Summary                       Bins      Hits    Misses  Coverage
+    -------                       ----      ----    ------  --------
+        FSM States                   3         3         0   100.00%
+        FSM Transitions              4         3         1    75.00%
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      85        83         2    97.64%
+
+================================Statement Details================================
+
+Statement Coverage for instance /\axi4_top#DUT  --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File axi4.sv
+    1                                                module axi4 (
+    2                                                    axi4_if.DUT axi4If
+    3                                                );
+    4                                                
+    5                                                
+    6                                                    // Internal memory signals
+    7                                                    reg mem_en, mem_we;
+    8                                                    reg [$clog2(axi4If.MEMORY_DEPTH)-1:0] mem_addr;
+    9                                                    reg [axi4If.DATA_WIDTH-1:0] mem_wdata;
+    10                                                   wire [axi4If.DATA_WIDTH-1:0] mem_rdata;
+    11                                               
+    12                                                   // Address and burst management
+    13                                                   reg [axi4If.ADDR_WIDTH-1:0] write_addr, read_addr;
+    14                                                   reg [7:0] write_burst_len, read_burst_len;
+    15                                                   reg [7:0] write_burst_cnt, read_burst_cnt;
+    16                                                   reg [2:0] write_size, read_size;
+    17                                                   
+    18                                                   wire [axi4If.ADDR_WIDTH-1:0] write_addr_incr,read_addr_incr;
+    19                                                   
+    20                                                   
+    21                                                   
+    22                                                   // Address increment calculation
+    23              1                         13         assign  write_addr_incr = (1 << write_size);
+    24              1                         15         assign  read_addr_incr  = (1 << read_size);
+    25                                                   
+    26                                                   // Address boundary check (4KB boundary = 12 bits)
+    27                                                   //assign write_boundary_cross = ( + (write_burst_len << write_size)) > 12'hFFF;
+    28              1                       5371         assign write_boundary_cross = ((write_addr & 12'hFFF) + ((write_burst_cnt + 1) << write_size)) > 12'hFFF;
+    29                                                   //assign read_boundary_cross = ( + (read_burst_len << read_size)) > 12'hFFF;
+    30              1                       5366         assign read_boundary_cross = ((read_addr & 12'hFFF) + ((read_burst_cnt + 1) << read_size)) > 12'hFFF;
+    31                                                   
+    32                                                   // Address range check
+    33              1                       5371         assign write_addr_valid = (write_addr >> 2) < axi4If.MEMORY_DEPTH;
+    34              1                       5366         assign read_addr_valid = (read_addr >> 2) < axi4If.MEMORY_DEPTH;
+    35                                               
+    36                                                   // Memory instance
+    37                                                   axi4_memory #(
+    38                                                       .DATA_WIDTH(axi4If.DATA_WIDTH),
+    39                                                       .ADDR_WIDTH($clog2(axi4If.MEMORY_DEPTH)),
+    40                                                       .DEPTH(axi4If.MEMORY_DEPTH)
+    41                                                   ) mem_inst (
+    42                                                       .clk(axi4If.ACLK),
+    43                                                       .rst_n(axi4If.ARESETn),
+    44                                                       .mem_en(mem_en),
+    45                                                       .mem_we(mem_we),
+    46                                                       .mem_addr(mem_addr),
+    47                                                       .mem_wdata(mem_wdata),
+    48                                                       .mem_rdata(mem_rdata)
+    49                                                   );
+    50                                               
+    51                                                   // FSM states
+    52                                                   reg [2:0] write_state;
+    53                                                   localparam W_IDLE = 3'd0,
+    54                                                              W_ADDR = 3'd1,
+    55                                                              W_DATA = 3'd2,
+    56                                                              W_RESP = 3'd3;
+    57                                               
+    58                                                   reg [2:0] read_state;
+    59                                                   localparam R_IDLE = 3'd0,
+    60                                                              R_ADDR = 3'd1,
+    61                                                              R_DATA = 3'd2;
+    62                                               
+    63                                                   // Registered memory read data for timing
+    64                                                   reg [axi4If.DATA_WIDTH-1:0] mem_rdata_reg;
+    65                                               
+    66              1                      18755         always @(posedge axi4If.ACLK or negedge axi4If.ARESETn) begin
+    67                                                       if (!axi4If.ARESETn) begin
+    68                                                           // Reset all outputs
+    69              1                         26                 axi4If.AWREADY <= 1'b1;  // Ready to accept address
+    70              1                         26                 axi4If.WREADY <= 1'b0;
+    71              1                         26                 axi4If.BVALID <= 1'b0;
+    72              1                         26                 axi4If.BRESP <= 2'b00;
+    73                                                           
+    74              1                         26                 axi4If.ARREADY <= 1'b1;  // Ready to accept address
+    75              1                         26                 axi4If.RVALID <= 1'b0;
+    76              1                         26                 axi4If.RRESP <= 2'b00;
+    77              1                         26                 axi4If.RDATA <= {axi4If.DATA_WIDTH{1'b0}};
+    78              1                         26                 axi4If.RLAST <= 1'b0;
+    79                                                           
+    80                                                           // Reset internal state
+    81              1                         26                 write_state <= W_IDLE;
+    82              1                         26                 read_state <= R_IDLE;
+    83              1                         26                 mem_en <= 1'b0;
+    84              1                         26                 mem_we <= 1'b0;
+    85              1                         26                 mem_addr <= {$clog2(axi4If.MEMORY_DEPTH){1'b0}};
+    86              1                         26                 mem_wdata <= {axi4If.DATA_WIDTH{1'b0}};
+    87                                                           
+    88                                                           // Reset address tracking
+    89              1                         26                 write_addr <= {axi4If.ADDR_WIDTH{1'b0}};
+    90              1                         26                 read_addr <= {axi4If.ADDR_WIDTH{1'b0}};
+    91              1                         26                 write_burst_len <= 8'b0;
+    92              1                         26                 read_burst_len <= 8'b0;
+    93              1                         26                 write_burst_cnt <= 8'b0;
+    94              1                         26                 read_burst_cnt <= 8'b0;
+    95              1                         26                 write_size <= 3'b0;
+    96              1                         26                 read_size <= 3'b0;
+    97                                                           
+    98              1                         26                 mem_rdata_reg <= {axi4If.DATA_WIDTH{1'b0}};
+    99                                                           
+    100                                                      end else begin
+    101                                                          // Default memory disable
+    102             1                      18729                 mem_en <= 1'b0;
+    103             1                      18729                 mem_we <= 1'b0;
+    104                                              
+    105                                                          // --------------------------
+    106                                                          // Write Channel FSM
+    107                                                          // --------------------------
+    108                                                          case (write_state)
+    109                                                              W_IDLE: begin
+    110             1                      11708                         axi4If.AWREADY <= 1'b1;
+    111             1                      11708                         axi4If.WREADY <= 1'b0;
+    112             1                      11708                         axi4If.BVALID <= 1'b0;
+    113                                                                  
+    114                                                                  if (axi4If.AWVALID && axi4If.AWREADY) begin
+    115                                                                      // Capture address phase information
+    116             1                        136                             write_addr <= axi4If.AWADDR;
+    117             1                        136                             write_burst_len <= axi4If.AWLEN;
+    118             1                        136                             write_burst_cnt <= axi4If.AWLEN;
+    119             1                        136                             write_size <= axi4If.AWSIZE;
+    120                                                                      
+    121             1                        136                             axi4If.AWREADY <= 1'b0;
+    122             1                        136                             write_state <= W_ADDR;
+    123                                                                  end
+    124                                                              end
+    125                                                              
+    126                                                              W_ADDR: begin
+    127                                                                  // Transition to data phase
+    128             1                        136                         axi4If.WREADY <= 1'b1;
+    129             1                        136                         write_state <= W_DATA;
+    130                                                              end
+    131                                                              
+    132                                                              W_DATA: begin
+    133                                                                  if (axi4If.WVALID && axi4If.WREADY) begin
+    134                                                                      // Check if address is valid
+    135                                                                      if (write_addr_valid && !write_boundary_cross) begin
+    136                                                                          // Perform write operation
+    137             1                       5214                                 mem_en <= 1'b1;
+    138             1                       5214                                 mem_we <= 1'b1;
+    139             1                       5214                                 mem_addr <= write_addr >> 2;  // Convert to word address
+    140             1                       5214                                 mem_wdata <= axi4If.WDATA;
+    141                                                                      end
+    142                                                                      
+    143                                                                      // Check for last transfer
+    144                                                                      if (axi4If.WLAST || write_burst_cnt == 0) begin
+    145             1                        136                                 axi4If.WREADY <= 1'b0;
+    146             1                        136                                 write_state <= W_RESP;
+    147                                                                          
+    148                                                                          // Set response - delayed until write completion
+    149                                                                          if (!write_addr_valid || write_boundary_cross) begin
+    150             1                         16                                     axi4If.BRESP <= 2'b10;  // SLVERR
+    151                                                                          end else begin
+    152             1                        120                                     axi4If.BRESP <= 2'b00;  // OKAY
+    153                                                                          end
+    154             1                        136                                 axi4If.BVALID <= 1'b1;
+    155                                                                      end else begin
+    156                                                                          // Continue burst - increment address
+    157             1                       5228                                 write_addr <= write_addr + write_addr_incr;
+    158             1                       5228                                 write_burst_cnt <= write_burst_cnt - 1'b1;
+    159                                                                      end
+    160                                                                  end
+    161                                                              end
+    162                                                              
+    163                                                              W_RESP: begin
+    164                                                                  if (axi4If.BREADY && axi4If.BVALID) begin
+    165             1                        136                             axi4If.BVALID <= 1'b0;
+    166             1                        136                             axi4If.BRESP <= 2'b00;
+    167             1                        136                             write_state <= W_IDLE;
+    168                                                                  end
+    169                                                              end
+    170                                                              
+    171             1                    ***0***                     default: write_state <= W_IDLE;
+    172                                                          endcase
+    173                                              
+    174                                                          // --------------------------
+    175                                                          // Read Channel FSM
+    176                                                          // --------------------------
+    177                                                          
+    178                                                          case (read_state)
+    179                                                              R_IDLE: begin
+    180             1                       7565                         axi4If.ARREADY <= 1'b1;
+    181             1                       7565                         axi4If.RVALID <= 1'b0;
+    182             1                       7565                         axi4If.RLAST <= 1'b0;
+    183                                                                  
+    184                                                                  if (axi4If.ARVALID && axi4If.ARREADY) begin
+    185                                                                      // Capture address phase information
+    186             1                        135                             read_addr <= axi4If.ARADDR;
+    187             1                        135                             read_burst_len <= axi4If.ARLEN;
+    188             1                        135                             read_burst_cnt <= axi4If.ARLEN;
+    189             1                        135                             read_size <= axi4If.ARSIZE;
+    190                                                                      
+    191             1                        135                             axi4If.ARREADY <= 1'b0;
+    192             1                        135                             read_state <= R_ADDR;
+    193                                                                  end
+    194                                                              end
+    195                                                              
+    196                                                              R_ADDR: begin
+    197                                                                  // Start first read
+    198                                                                  if (read_addr_valid && !read_boundary_cross) begin
+    199             1                        119                             mem_en <= 1'b1;
+    200             1                        119                             mem_addr <= read_addr >> 2;  // Convert to word address
+    201                                                                      
+    202                                                                  end
+    203             1                        135                         read_state <= R_DATA;
+    204                                                              end
+    205                                                              
+    206                                                              R_DATA: begin
+    207                                                                  // Present read data
+    208                                                                  if (read_addr_valid && !read_boundary_cross) begin
+    209             1                      10721                             axi4If.RDATA <= mem_rdata;
+    210             1                      10721                             axi4If.RRESP <= 2'b00;  // OKAY
+    211                                                                  end else begin
+    212             1                        308                             axi4If.RDATA <= {axi4If.DATA_WIDTH{1'b0}};
+    213             1                        308                             axi4If.RRESP <= 2'b10;  // SLVERR
+    214                                                                  end
+    215                                                                  
+    216             1                      11029                         axi4If.RVALID <= 1'b1;
+    217             1                      11029                         axi4If.RLAST <= (read_burst_cnt == 0);
+    218                                                                  
+    219                                                                  if (axi4If.RREADY && axi4If.RVALID) begin
+    220             1                       5358                             axi4If.RVALID <= 1'b0;
+    221                                                                      
+    222                                                                      if (read_burst_cnt > 0) begin
+    223                                                                          // Continue burst
+    224             1                       5223                                 read_addr <= read_addr + read_addr_incr;
+    225             1                       5223                                 read_burst_cnt <= read_burst_cnt - 1'b1;
+    226                                                                          
+    227                                                                          // Start next read
+    228                                                                          if (read_addr_valid && !read_boundary_cross) begin
+    229             1                       5089                                     mem_en <= 1'b1;
+    230             1                       5089                                     mem_addr <= (read_addr + read_addr_incr) >> 2;
+    231                                                                          end
+    232                                                                          
+    233                                                                          // Stay in R_DATA for next transfer
+    234                                                                      end else begin
+    235                                                                          // End of burst
+    236             1                        135                                 axi4If.RLAST <= 1'b0;
+    237             1                        135                                 read_state <= R_IDLE;
+    238                                                                      end
+    239                                                                  end
+    240                                                              end
+    241                                                              
+    242             1                    ***0***                     default: read_state <= R_IDLE;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        440       308       132    70.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /\axi4_top#DUT  --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                     mem_addr[9-0]           1           1      100.00 
+                                            mem_en           1           1      100.00 
+                                   mem_rdata[0-31]           1           1      100.00 
+                               mem_rdata_reg[31-0]           0           0        0.00 
+                                   mem_wdata[31-0]           1           1      100.00 
+                                            mem_we           1           1      100.00 
+                                   read_addr[15-0]           1           1      100.00 
+                                 read_addr_incr[0]           1           1      100.00 
+                                 read_addr_incr[1]           0           0        0.00 
+                                 read_addr_incr[2]           1           1      100.00 
+                              read_addr_incr[3-15]           0           0        0.00 
+                                   read_addr_valid           1           1      100.00 
+                               read_boundary_cross           1           1      100.00 
+                               read_burst_cnt[7-0]           1           1      100.00 
+                               read_burst_len[7-0]           1           1      100.00 
+                                      read_size[2]           0           0        0.00 
+                                      read_size[1]           1           1      100.00 
+                                      read_size[0]           0           0        0.00 
+                                     read_state[2]           0           0        0.00 
+                                   read_state[1-0]           1           1      100.00 
+                                  write_addr[15-0]           1           1      100.00 
+                                write_addr_incr[0]           1           1      100.00 
+                                write_addr_incr[1]           0           0        0.00 
+                                write_addr_incr[2]           1           1      100.00 
+                             write_addr_incr[3-15]           0           0        0.00 
+                                  write_addr_valid           1           1      100.00 
+                              write_boundary_cross           1           1      100.00 
+                              write_burst_cnt[7-0]           1           1      100.00 
+                              write_burst_len[7-0]           1           1      100.00 
+                                     write_size[2]           0           0        0.00 
+                                     write_size[1]           1           1      100.00 
+                                     write_size[0]           0           0        0.00 
+                                    write_state[2]           0           0        0.00 
+                                  write_state[1-0]           1           1      100.00 
+
+Total Node Count     =        220 
+Toggled Node Count   =        154 
+Untoggled Node Count =         66 
+
+Toggle Coverage      =      70.00% (308 of 440 bins)
+
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/\axi4_top#DUT /sva/cp_address_write     axi4_sva Verilog  SVA  axi4_sva.sv(49) 7231 Covered   
+/\axi4_top#DUT /sva/cp_address_read      axi4_sva Verilog  SVA  axi4_sva.sv(52) 11282 Covered   
+/\axi4_top#DUT /sva/cp_writeData         axi4_sva Verilog  SVA  axi4_sva.sv(55) 5871 Covered   
+/\axi4_top#DUT /sva/cp_writeResponse     axi4_sva Verilog  SVA  axi4_sva.sv(64)  136 Covered   
+
+TOTAL DIRECTIVE COVERAGE: 100.00%  COVERS: 4
+
+ASSERTION RESULTS:
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/\axi4_top#DUT /sva/assert_rst
+                     axi4_sva.sv(7)                     0          1
+/\axi4_top#DUT /sva/clk_check
+                     axi4_sva.sv(18)                    0          1
+/\axi4_top#DUT /sva/ap_address_write
+                     axi4_sva.sv(48)                    0          1
+/\axi4_top#DUT /sva/ap_address_read
+                     axi4_sva.sv(51)                    0          1
+/\axi4_top#DUT /sva/ap_writeData
+                     axi4_sva.sv(54)                    0          1
+/\axi4_top#DUT /sva/ap_writeResponse
+                     axi4_sva.sv(63)                    0          1
+
+Total Coverage By Instance (filtered view): 91.16%
+

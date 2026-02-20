@@ -1,0 +1,735 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /\axi4_top#DUT /mem_inst
+=== Design Unit: work.axi4_memory
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         5         5         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /\axi4_top#DUT /mem_inst
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File ./memory/axi_memory.v
+------------------------------------IF Branch------------------------------------
+    24                                     34696     Count coming in to IF
+    24              1                         45     
+    26              1                      21383     
+                                           13268     All False Count
+Branch totals: 3 hits of 3 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    27                                     21383     Count coming in to IF
+    27              1                      10789     
+    29              1                      10594     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       7         7         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /\axi4_top#DUT /mem_inst --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File ./memory/axi_memory.v
+    23              1                      34696     
+    25              1                         45     
+    28              1                      10789     
+    30              1                      10594     
+    36              1                          5     
+    36              2                       5120     
+    37              1                       5120     
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        220       156        64    70.90%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /\axi4_top#DUT /mem_inst --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                           j[0-31]           0           0        0.00 
+
+Total Node Count     =        110 
+Toggled Node Count   =         78 
+Untoggled Node Count =         32 
+
+Toggle Coverage      =      70.90% (156 of 220 bins)
+
+=================================================================================
+=== Instance: /\axi4_top#DUT /sva
+=== Design Unit: work.axi4_sva
+=================================================================================
+
+Assertion Coverage:
+    Assertions                       8         6         2    75.00%
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/\axi4_top#DUT /sva/assert_rst
+                     axi4_sva.sv(7)                     0          5
+/\axi4_top#DUT /sva/clk_check
+                     axi4_sva.sv(18)                    0          5
+/\axi4_top#DUT /sva/ap_address_write
+                     axi4_sva.sv(48)                    0          5
+/\axi4_top#DUT /sva/ap_address_read
+                     axi4_sva.sv(51)                    0          5
+/\axi4_top#DUT /sva/ap_writeData
+                     axi4_sva.sv(54)                    0          5
+/\axi4_top#DUT /sva/ap_writeBoundaryCheck
+                     axi4_sva.sv(57)                  476          5
+/\axi4_top#DUT /sva/ap_readBoundaryCheck
+                     axi4_sva.sv(60)                  644          5
+/\axi4_top#DUT /sva/ap_writeResponse
+                     axi4_sva.sv(63)                    0          5
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         2         2         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /\axi4_top#DUT /sva
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File axi4_sva.sv
+------------------------------------IF Branch------------------------------------
+    6                                      26324     Count coming in to IF
+    6               1                         71     
+                                           26253     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+
+Directive Coverage:
+    Directives                       6         6         0   100.00%
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/\axi4_top#DUT /sva/cp_address_write     axi4_sva Verilog  SVA  axi4_sva.sv(49) 15854 Covered   
+/\axi4_top#DUT /sva/cp_address_read      axi4_sva Verilog  SVA  axi4_sva.sv(52) 22947 Covered   
+/\axi4_top#DUT /sva/cp_writeData         axi4_sva Verilog  SVA  axi4_sva.sv(55) 13171 Covered   
+/\axi4_top#DUT /sva/cp_writeBoundaryCheck 
+                                         axi4_sva Verilog  SVA  axi4_sva.sv(58) 15656 Covered   
+/\axi4_top#DUT /sva/cp_readBoundaryCheck axi4_sva Verilog  SVA  axi4_sva.sv(61) 23306 Covered   
+/\axi4_top#DUT /sva/cp_writeResponse     axi4_sva Verilog  SVA  axi4_sva.sv(64)  571 Covered   
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       5         5         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /\axi4_top#DUT /sva --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File axi4_sva.sv
+    5               1                      26324     
+    14              1                          5     
+    15              1                          5     
+    16              1                      80366     
+    17              1                      80366     
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                          2         2         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /\axi4_top#DUT /sva --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+
+Total Node Count     =          1 
+Toggled Node Count   =          1 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (2 of 2 bins)
+
+=================================================================================
+=== Instance: /\axi4_top#DUT 
+=== Design Unit: work.axi4
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        35        33         2    94.28%
+
+================================Branch Details================================
+
+Branch Coverage for instance /\axi4_top#DUT 
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File axi4.sv
+------------------------------------IF Branch------------------------------------
+    67                                     40233     Count coming in to IF
+    67              1                        128     
+    100             1                      40105     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    108                                    40105     Count coming in to CASE
+    109             1                      25101     
+    126             1                        571     
+    132             1                      13824     
+    163             1                        609     
+    171             1                    ***0***     
+Branch totals: 4 hits of 5 branches = 80.00%
+
+------------------------------------IF Branch------------------------------------
+    114                                    25101     Count coming in to IF
+    114             1                        571     
+                                           24530     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    133                                    13824     Count coming in to IF
+    133             1                      11053     
+                                            2771     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    135                                    11053     Count coming in to IF
+    135             1                      10789     
+                                             264     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    144                                    11053     Count coming in to IF
+    144             1                        571     
+    155             1                      10482     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    149                                      571     Count coming in to IF
+    149             1                         32     
+    151             1                        539     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    164                                      609     Count coming in to IF
+    164             1                        571     
+                                              38     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    178                                    40105     Count coming in to CASE
+    179             1                      17289     
+    196             1                        569     
+    206             1                      22247     
+    242             1                    ***0***     
+Branch totals: 3 hits of 4 branches = 75.00%
+
+------------------------------------IF Branch------------------------------------
+    184                                    17289     Count coming in to IF
+    184             1                        569     
+                                           16720     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    198                                      569     Count coming in to IF
+    198             1                        537     
+                                              32     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    208                                    22247     Count coming in to IF
+    208             1                      21699     
+    211             1                        548     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    219                                    22247     Count coming in to IF
+    219             1                      10858     
+                                           11389     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    222                                    10858     Count coming in to IF
+    222             1                      10289     
+    234             1                        569     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    228                                    10289     Count coming in to IF
+    228             1                      10057     
+                                             232     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                      23        15         8    65.21%
+
+================================Condition Details================================
+
+Condition Coverage for instance /\axi4_top#DUT  --
+
+  File axi4.sv
+----------------Focused Condition View-------------------
+Line       114 Item    1  (axi4If.AWVALID && axi4If.AWREADY)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       133 Item    1  (axi4If.WVALID && axi4If.WREADY)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+     Input Term   Covered  Reason for no coverage   Hint
+    -----------  --------  -----------------------  --------------
+  axi4If.WVALID         Y
+  axi4If.WREADY         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          5  axi4If.WVALID_0       -                             
+  Row   2:          5  axi4If.WVALID_1       axi4If.WREADY                 
+  Row   3:    ***0***  axi4If.WREADY_0       axi4If.WVALID                 
+  Row   4:          5  axi4If.WREADY_1       axi4If.WVALID                 
+
+----------------Focused Condition View-------------------
+Line       135 Item    1  (write_addr_valid && ~write_boundary_cross)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+            Input Term   Covered  Reason for no coverage   Hint
+           -----------  --------  -----------------------  --------------
+      write_addr_valid         Y
+  write_boundary_cross         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target              Non-masking condition(s)      
+ ---------  ---------  --------------------    -------------------------     
+  Row   1:          4  write_addr_valid_0      -                             
+  Row   2:          5  write_addr_valid_1      ~write_boundary_cross         
+  Row   3:          5  write_boundary_cross_0  write_addr_valid              
+  Row   4:    ***0***  write_boundary_cross_1  write_addr_valid              
+
+----------------Focused Condition View-------------------
+Line       144 Item    1  (axi4If.WLAST || (write_burst_cnt == 0))
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+              Input Term   Covered  Reason for no coverage   Hint
+             -----------  --------  -----------------------  --------------
+            axi4If.WLAST         Y
+  (write_burst_cnt == 0)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                Non-masking condition(s)      
+ ---------  ---------  --------------------      -------------------------     
+  Row   1:          5  axi4If.WLAST_0            ~(write_burst_cnt == 0)       
+  Row   2:          5  axi4If.WLAST_1            -                             
+  Row   3:          5  (write_burst_cnt == 0)_0  ~axi4If.WLAST                 
+  Row   4:    ***0***  (write_burst_cnt == 0)_1  ~axi4If.WLAST                 
+
+----------------Focused Condition View-------------------
+Line       149 Item    1  (~write_addr_valid || write_boundary_cross)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+            Input Term   Covered  Reason for no coverage   Hint
+           -----------  --------  -----------------------  --------------
+      write_addr_valid         Y
+  write_boundary_cross         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target              Non-masking condition(s)      
+ ---------  ---------  --------------------    -------------------------     
+  Row   1:          4  write_addr_valid_0      -                             
+  Row   2:          5  write_addr_valid_1      ~write_boundary_cross         
+  Row   3:          5  write_boundary_cross_0  write_addr_valid              
+  Row   4:    ***0***  write_boundary_cross_1  write_addr_valid              
+
+----------------Focused Condition View-------------------
+Line       164 Item    1  (axi4If.BREADY && axi4If.BVALID)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+     Input Term   Covered  Reason for no coverage   Hint
+    -----------  --------  -----------------------  --------------
+  axi4If.BREADY         Y
+  axi4If.BVALID         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          5  axi4If.BREADY_0       -                             
+  Row   2:          5  axi4If.BREADY_1       axi4If.BVALID                 
+  Row   3:    ***0***  axi4If.BVALID_0       axi4If.BREADY                 
+  Row   4:          5  axi4If.BVALID_1       axi4If.BREADY                 
+
+----------------Focused Condition View-------------------
+Line       184 Item    1  (axi4If.ARVALID && axi4If.ARREADY)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       198 Item    1  (read_addr_valid && ~read_boundary_cross)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+           Input Term   Covered  Reason for no coverage   Hint
+          -----------  --------  -----------------------  --------------
+      read_addr_valid         Y
+  read_boundary_cross         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target             Non-masking condition(s)      
+ ---------  ---------  --------------------   -------------------------     
+  Row   1:          4  read_addr_valid_0      -                             
+  Row   2:          5  read_addr_valid_1      ~read_boundary_cross          
+  Row   3:          5  read_boundary_cross_0  read_addr_valid               
+  Row   4:    ***0***  read_boundary_cross_1  read_addr_valid               
+
+----------------Focused Condition View-------------------
+Line       208 Item    1  (read_addr_valid && ~read_boundary_cross)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+           Input Term   Covered  Reason for no coverage   Hint
+          -----------  --------  -----------------------  --------------
+      read_addr_valid         Y
+  read_boundary_cross         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target             Non-masking condition(s)      
+ ---------  ---------  --------------------   -------------------------     
+  Row   1:          4  read_addr_valid_0      -                             
+  Row   2:          5  read_addr_valid_1      ~read_boundary_cross          
+  Row   3:          5  read_boundary_cross_0  read_addr_valid               
+  Row   4:    ***0***  read_boundary_cross_1  read_addr_valid               
+
+----------------Focused Condition View-------------------
+Line       219 Item    1  (axi4If.RREADY && axi4If.RVALID)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       222 Item    1  (read_burst_cnt > 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       228 Item    1  (read_addr_valid && ~read_boundary_cross)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+           Input Term   Covered  Reason for no coverage   Hint
+          -----------  --------  -----------------------  --------------
+      read_addr_valid         Y
+  read_boundary_cross         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target             Non-masking condition(s)      
+ ---------  ---------  --------------------   -------------------------     
+  Row   1:          4  read_addr_valid_0      -                             
+  Row   2:          5  read_addr_valid_1      ~read_boundary_cross          
+  Row   3:          5  read_boundary_cross_0  read_addr_valid               
+  Row   4:    ***0***  read_boundary_cross_1  read_addr_valid               
+
+
+Expression Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Expressions                      5         3         2    60.00%
+
+================================Expression Details================================
+
+Expression Coverage for instance /\axi4_top#DUT  --
+
+  File axi4.sv
+----------------Focused Expression View-----------------
+Line       28 Item    1  (((write_addr & 4095) + ((write_burst_cnt + 1) << write_size)) > 4095)
+Expression totals: 0 of 1 input term covered = 0.00%
+
+                                                              Input Term   Covered  Reason for no coverage   Hint
+                                                             -----------  --------  -----------------------  --------------
+  (((write_addr & 4095) + ((write_burst_cnt + 1) << write_size)) > 4095)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                                                                Non-masking condition(s)      
+ ---------  ---------  --------------------                                                      -------------------------     
+  Row   1:          5  (((write_addr & 4095) + ((write_burst_cnt + 1) << write_size)) > 4095)_0  -                             
+  Row   2:    ***0***  (((write_addr & 4095) + ((write_burst_cnt + 1) << write_size)) > 4095)_1  -                             
+
+----------------Focused Expression View-----------------
+Line       30 Item    1  (((read_addr & 4095) + ((read_burst_cnt + 1) << read_size)) > 4095)
+Expression totals: 0 of 1 input term covered = 0.00%
+
+                                                           Input Term   Covered  Reason for no coverage   Hint
+                                                          -----------  --------  -----------------------  --------------
+  (((read_addr & 4095) + ((read_burst_cnt + 1) << read_size)) > 4095)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                                                             Non-masking condition(s)      
+ ---------  ---------  --------------------                                                   -------------------------     
+  Row   1:          5  (((read_addr & 4095) + ((read_burst_cnt + 1) << read_size)) > 4095)_0  -                             
+  Row   2:    ***0***  (((read_addr & 4095) + ((read_burst_cnt + 1) << read_size)) > 4095)_1  -                             
+
+----------------Focused Expression View-----------------
+Line       33 Item    1  ((write_addr >> 2) < axi4If.MEMORY_DEPTH)
+Expression totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Expression View-----------------
+Line       34 Item    1  ((read_addr >> 2) < axi4If.MEMORY_DEPTH)
+Expression totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Expression View-----------------
+Line       217 Item    1  (read_burst_cnt == 0)
+Expression totals: 1 of 1 input term covered = 100.00%
+
+
+FSM Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    FSM States                       7         7         0   100.00%
+    FSM Transitions                 10         7         3    70.00%
+
+================================FSM Details================================
+
+FSM Coverage for instance /\axi4_top#DUT  --
+
+FSM_ID: write_state
+    Current State Object : write_state
+    ----------------------
+    State Value MapInfo :
+    ---------------------
+Line          State Name               Value
+----          ----------               -----
+ 109              W_IDLE                   0
+ 126              W_ADDR                   1
+ 132              W_DATA                   2
+ 163              W_RESP                   3
+    Covered States :
+    ----------------
+                   State           Hit_count
+                   -----           ---------
+                  W_IDLE                 699          
+                  W_ADDR                 571          
+                  W_DATA                 571          
+                  W_RESP                 571          
+    Covered Transitions :
+    ---------------------
+Line            Trans_ID           Hit_count          Transition          
+----            --------           ---------          ----------          
+ 122                   0                 571          W_IDLE -> W_ADDR              
+ 129                   1                 571          W_ADDR -> W_DATA              
+ 146                   3                 571          W_DATA -> W_RESP              
+ 167                   5                 571          W_RESP -> W_IDLE              
+    Uncovered Transitions :
+    -----------------------
+Line            Trans_ID          Transition          
+----            --------          ----------          
+  81                   2          W_ADDR -> W_IDLE    
+  81                   4          W_DATA -> W_IDLE    
+
+
+    Summary                       Bins      Hits    Misses  Coverage
+    -------                       ----      ----    ------  --------
+        FSM States                   4         4         0   100.00%
+        FSM Transitions              6         4         2    66.66%
+FSM_ID: read_state
+    Current State Object : read_state
+    ----------------------
+    State Value MapInfo :
+    ---------------------
+Line          State Name               Value
+----          ----------               -----
+ 179              R_IDLE                   0
+ 196              R_ADDR                   1
+ 206              R_DATA                   2
+    Covered States :
+    ----------------
+                   State           Hit_count
+                   -----           ---------
+                  R_IDLE                 697          
+                  R_ADDR                 569          
+                  R_DATA                 569          
+    Covered Transitions :
+    ---------------------
+Line            Trans_ID           Hit_count          Transition          
+----            --------           ---------          ----------          
+ 192                   0                 569          R_IDLE -> R_ADDR              
+ 203                   1                 569          R_ADDR -> R_DATA              
+ 237                   3                 569          R_DATA -> R_IDLE              
+    Uncovered Transitions :
+    -----------------------
+Line            Trans_ID          Transition          
+----            --------          ----------          
+  82                   2          R_ADDR -> R_IDLE    
+
+
+    Summary                       Bins      Hits    Misses  Coverage
+    -------                       ----      ----    ------  --------
+        FSM States                   3         3         0   100.00%
+        FSM Transitions              4         3         1    75.00%
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      85        83         2    97.64%
+
+================================Statement Details================================
+
+Statement Coverage for instance /\axi4_top#DUT  --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File axi4.sv
+    23              1                         62     
+    24              1                         56     
+    28              1                      11087     
+    30              1                      10889     
+    33              1                      11086     
+    34              1                      10888     
+    66              1                      40233     
+    69              1                        128     
+    70              1                        128     
+    71              1                        128     
+    72              1                        128     
+    74              1                        128     
+    75              1                        128     
+    76              1                        128     
+    77              1                        128     
+    78              1                        128     
+    81              1                        128     
+    82              1                        128     
+    83              1                        128     
+    84              1                        128     
+    85              1                        128     
+    86              1                        128     
+    89              1                        128     
+    90              1                        128     
+    91              1                        128     
+    92              1                        128     
+    93              1                        128     
+    94              1                        128     
+    95              1                        128     
+    96              1                        128     
+    98              1                        128     
+    102             1                      40105     
+    103             1                      40105     
+    110             1                      25101     
+    111             1                      25101     
+    112             1                      25101     
+    116             1                        571     
+    117             1                        571     
+    118             1                        571     
+    119             1                        571     
+    121             1                        571     
+    122             1                        571     
+    128             1                        571     
+    129             1                        571     
+    137             1                      10789     
+    138             1                      10789     
+    139             1                      10789     
+    140             1                      10789     
+    145             1                        571     
+    146             1                        571     
+    150             1                         32     
+    152             1                        539     
+    154             1                        571     
+    157             1                      10482     
+    158             1                      10482     
+    165             1                        571     
+    166             1                        571     
+    167             1                        571     
+    171             1                    ***0***     
+    180             1                      17289     
+    181             1                      17289     
+    182             1                      17289     
+    186             1                        569     
+    187             1                        569     
+    188             1                        569     
+    189             1                        569     
+    191             1                        569     
+    192             1                        569     
+    199             1                        537     
+    200             1                        537     
+    203             1                        569     
+    209             1                      21699     
+    210             1                      21699     
+    212             1                        548     
+    213             1                        548     
+    216             1                      22247     
+    217             1                      22247     
+    220             1                      10858     
+    224             1                      10289     
+    225             1                      10289     
+    229             1                      10057     
+    230             1                      10057     
+    236             1                        569     
+    237             1                        569     
+    242             1                    ***0***     
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        440       304       136    69.09%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /\axi4_top#DUT  --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                               mem_rdata_reg[0-31]           0           0        0.00 
+                                 read_addr_incr[1]           0           0        0.00 
+                              read_addr_incr[3-15]           0           0        0.00 
+                               read_boundary_cross           0           0        0.00 
+                                      read_size[0]           0           0        0.00 
+                                      read_size[2]           0           0        0.00 
+                                     read_state[2]           0           0        0.00 
+                                write_addr_incr[1]           0           0        0.00 
+                             write_addr_incr[3-15]           0           0        0.00 
+                              write_boundary_cross           0           0        0.00 
+                                     write_size[0]           0           0        0.00 
+                                     write_size[2]           0           0        0.00 
+                                    write_state[2]           0           0        0.00 
+
+Total Node Count     =        220 
+Toggled Node Count   =        152 
+Untoggled Node Count =         68 
+
+Toggle Coverage      =      69.09% (304 of 440 bins)
+
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/\axi4_top#DUT /sva/cp_address_write     axi4_sva Verilog  SVA  axi4_sva.sv(49) 15854 Covered   
+/\axi4_top#DUT /sva/cp_address_read      axi4_sva Verilog  SVA  axi4_sva.sv(52) 22947 Covered   
+/\axi4_top#DUT /sva/cp_writeData         axi4_sva Verilog  SVA  axi4_sva.sv(55) 13171 Covered   
+/\axi4_top#DUT /sva/cp_writeBoundaryCheck 
+                                         axi4_sva Verilog  SVA  axi4_sva.sv(58) 15656 Covered   
+/\axi4_top#DUT /sva/cp_readBoundaryCheck axi4_sva Verilog  SVA  axi4_sva.sv(61) 23306 Covered   
+/\axi4_top#DUT /sva/cp_writeResponse     axi4_sva Verilog  SVA  axi4_sva.sv(64)  571 Covered   
+
+TOTAL DIRECTIVE COVERAGE: 100.00%  COVERS: 6
+
+ASSERTION RESULTS:
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/\axi4_top#DUT /sva/assert_rst
+                     axi4_sva.sv(7)                     0          5
+/\axi4_top#DUT /sva/clk_check
+                     axi4_sva.sv(18)                    0          5
+/\axi4_top#DUT /sva/ap_address_write
+                     axi4_sva.sv(48)                    0          5
+/\axi4_top#DUT /sva/ap_address_read
+                     axi4_sva.sv(51)                    0          5
+/\axi4_top#DUT /sva/ap_writeData
+                     axi4_sva.sv(54)                    0          5
+/\axi4_top#DUT /sva/ap_writeBoundaryCheck
+                     axi4_sva.sv(57)                  476          5
+/\axi4_top#DUT /sva/ap_readBoundaryCheck
+                     axi4_sva.sv(60)                  644          5
+/\axi4_top#DUT /sva/ap_writeResponse
+                     axi4_sva.sv(63)                    0          5
+
+Total Coverage By Instance (filtered view): 81.46%
+

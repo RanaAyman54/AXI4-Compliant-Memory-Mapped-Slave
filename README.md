@@ -72,9 +72,6 @@ Use the Coverage Viewer (GUI mode) for detailed coverage inspection
 
 SystemVerilog simulator (ModelSim / Questa / VCS)
 
-Valid simulator license
-
-Git (for version control)
 
 📌 Test Scenarios
 
